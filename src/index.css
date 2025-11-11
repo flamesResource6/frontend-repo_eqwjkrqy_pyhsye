@@ -19,28 +19,43 @@
 
   body {
     @apply antialiased;
+    transition: background-color 400ms ease, color 400ms ease;
+  }
+
+  /* Theme palettes via body[data-theme] */
+  body[data-theme='summer'] {
+    background: linear-gradient(135deg, #fff8e1, #e0f2ff);
+    color: #0b1221;
+  }
+  body[data-theme='winter'] {
+    background: linear-gradient(135deg, #e6f1ff, #f8fbff);
+    color: #0b1221;
+  }
+  body[data-theme='autumn'] {
+    background: linear-gradient(135deg, #fff2e2, #ffe7d6);
+    color: #1a1009;
+  }
+  body[data-theme='rain'] {
+    background: linear-gradient(135deg, #e9eef3, #f6f7f9);
+    color: #0f141a;
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
-@layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
+/* Seasonal keyframes */
+@keyframes snow {
+  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh) translateX(20px); opacity: 0; }
+}
 
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+@keyframes leaf {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh) translateX(40px) rotate(180deg); opacity: 0; }
+}
+
+@keyframes rain {
+  0% { transform: translateY(-20vh); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(120vh); opacity: 0; }
 }
